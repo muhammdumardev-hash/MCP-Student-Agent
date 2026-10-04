@@ -1,15 +1,15 @@
 # MCP Student Agent
 
-A simple MCP-powered AI Student Assistant built for learning the Model Context Protocol (MCP).
+A simple MCP-powered AI Student Assistant built with Streamlit, Groq, and the Model Context Protocol (MCP).
 
-## What this project demonstrates
+## Features
 
-- An MCP server
-- Custom MCP tools
-- An AI agent connected to the MCP server
-- Automatic tool selection by the AI model
+- Streamlit web interface
+- MCP server with custom tools
+- Groq AI agent
+- Automatic MCP tool selection
 - Successful MCP tool calls
-- A multi-tool workflow
+- Multi-tool workflow
 
 ## MCP tools
 
@@ -19,11 +19,14 @@ A simple MCP-powered AI Student Assistant built for learning the Model Context P
 
 ## Architecture
 
-```
+```text
 User
   |
   v
-AI Agent (Groq)
+Streamlit App
+  |
+  v
+Groq AI Agent
   |
   v
 MCP Client
@@ -36,94 +39,68 @@ MCP Server
   +--> get_course_info
 ```
 
-The MCP client starts the MCP server as a local subprocess using STDIO. The current Python MCP SDK provides this client/server pattern through `ClientSession`, `StdioServerParameters`, and `stdio_client`.
+## Streamlit deployment
 
-## Setup
+### 1. Deploy the repository
 
-### 1. Create a virtual environment
+On Streamlit Community Cloud, select this repository and set the main file to:
 
-Windows:
+```text
+app.py
+```
+
+### 2. Add the Groq API key
+
+In Streamlit Cloud:
+
+**App → Settings → Secrets**
+
+Add:
+
+```toml
+GROQ_API_KEY = "your_groq_api_key_here"
+GROQ_MODEL = "openai/gpt-oss-120b"
+```
+
+Do not upload your real API key to GitHub.
+
+## Local setup
 
 ```bash
 python -m venv venv
 venv\Scripts\activate
-```
-
-### 2. Install dependencies
-
-```bash
 pip install -r requirements.txt
+streamlit run app.py
 ```
 
-### 3. Add your Groq API key
+## Example questions
 
-Create an environment variable:
-
-Windows Command Prompt:
-
-```cmd
-set GROQ_API_KEY=your_groq_api_key_here
-```
-
-PowerShell:
-
-```powershell
-$env:GROQ_API_KEY="your_groq_api_key_here"
-```
-
-You can also set `GROQ_MODEL` if you want to use another Groq tool-calling model.
-
-## Run
-
-From the project folder:
-
-```bash
-python agent.py
-```
-
-Then try:
-
-```
+```text
 Calculate the percentage for 680 marks out of 800.
-```
 
-### Multi-tool example
+Calculate my CGPA if I have 256.6 grade points and 90 credit hours.
 
-Try:
+Tell me about Data Communication.
 
-```
 Calculate my percentage for 680 out of 800 and tell me about Data Communication.
 ```
 
-The AI can call more than one MCP tool and then combine the results into one final response.
+The last example demonstrates a multi-tool workflow because the AI can use more than one MCP tool before producing the final answer.
 
-## Run the MCP server separately
-
-For a basic server-running demonstration:
-
-```bash
-python mcp_server.py
-```
-
-The server uses STDIO, so it is normally launched by the MCP client/agent rather than through a browser.
-
-## Suggested internship screenshots
+## Internship screenshots
 
 Capture:
 
-1. MCP server running
-2. Available MCP tools
-3. AI agent connected to the MCP server
-4. A successful tool call
-5. A multi-tool workflow
-6. The final AI response
+1. Streamlit app running
+2. MCP tools visible
+3. Successful MCP tool call
+4. Multi-tool workflow
+5. Final AI response
 
-## Safety note
+## Safety
 
-The tools in this project only perform simple calculations and return predefined course information. They do not modify files, access private accounts, or perform external actions. This keeps the first MCP project simple and safe.
+The MCP tools only perform simple calculations and return predefined course information. They do not modify files, access private accounts, or perform external actions.
 
-## Learning goal
+## Learning flow
 
-The main goal is to understand this flow:
-
-**User request -> AI decides which tool to use -> MCP client calls MCP server -> tool returns result -> AI gives final answer.**
+**User request → AI decides which tool to use → MCP client calls MCP server → tool returns result → AI gives final answer.**
