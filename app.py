@@ -186,12 +186,34 @@ header[data-testid="stHeader"] {
     border: 1.5px solid var(--line);
     border-radius: 12px;
     background: #FAFBFE;
-    margin-top: .6rem;
+    margin-top: 1rem !important;
+    margin-bottom: .25rem !important;
+    overflow: visible !important;
+}
+
+[data-testid="stExpander"] summary {
+    min-height: 2.75rem;
+    padding: .7rem 1rem !important;
+    line-height: 1.4 !important;
+    align-items: center;
+}
+
+[data-testid="stExpander"] summary p {
+    margin: 0 !important;
+    line-height: 1.4 !important;
+}
+
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] {
+    padding: 0 1rem 1rem 1rem !important;
 }
 
 .toolcall {
-    padding: .5rem 0;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: .8rem 0;
     border-top: 1px dashed var(--line);
+    line-height: 1.5;
 }
 
 .toolcall:first-child {
