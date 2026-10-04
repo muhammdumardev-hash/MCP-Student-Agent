@@ -19,13 +19,6 @@ st.set_page_config(
 
 # ----------------------------------------------------------------------------
 # Design tokens + CSS
-#   ink     #14213D  deep navy for text and sidebar
-#   paper   #F4F6FB  cool light page background
-#   card    #FFFFFF  assistant bubbles, buttons
-#   line    #DDE3F0  borders
-#   marker  #FFD84D  highlighter yellow (the one memorable accent)
-#   blue    #2F4BFF  focus + links
-# Type: Bricolage Grotesque (headings) + DM Sans (body)
 # ----------------------------------------------------------------------------
 st.markdown(
     """
@@ -45,13 +38,32 @@ st.markdown(
 html, body, .stApp, [class*="st-"] {
     font-family: 'DM Sans', system-ui, sans-serif;
 }
-.stApp { background: var(--paper); color: var(--ink); }
-#MainMenu, footer { visibility: hidden; }
-header[data-testid="stHeader"] { background: transparent; }
-.block-container { max-width: 820px; padding-top: 2rem; padding-bottom: 7rem; }
+
+.stApp {
+    background: var(--paper);
+    color: var(--ink);
+}
+
+#MainMenu, footer {
+    visibility: hidden;
+}
+
+header[data-testid="stHeader"] {
+    background: transparent;
+}
+
+.block-container {
+    max-width: 820px;
+    padding-top: 2rem;
+    padding-bottom: 7rem;
+}
 
 /* ---------- Hero ---------- */
-.hero { margin-bottom: 1.4rem; }
+
+.hero {
+    margin-bottom: 1.4rem;
+}
+
 .hero h1 {
     font-family: 'Bricolage Grotesque', sans-serif;
     font-weight: 800;
@@ -62,14 +74,27 @@ header[data-testid="stHeader"] { background: transparent; }
     margin: 0 0 .6rem 0;
     padding: 0;
 }
+
 .hero h1 span {
-    background: linear-gradient(transparent 62%, var(--marker) 62%, var(--marker) 92%, transparent 92%);
+    background: linear-gradient(
+        transparent 62%,
+        var(--marker) 62%,
+        var(--marker) 92%,
+        transparent 92%
+    );
     padding: 0 .15em;
     margin-left: -.15em;
 }
-.hero p { color: var(--muted); font-size: 1.05rem; margin: 0; max-width: 52ch; }
+
+.hero p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin: 0;
+    max-width: 52ch;
+}
 
 /* ---------- Starter prompts ---------- */
+
 .stButton > button {
     background: var(--card);
     color: var(--ink);
@@ -82,15 +107,24 @@ header[data-testid="stHeader"] { background: transparent; }
     min-height: 4.4rem;
     transition: border-color .15s ease, transform .15s ease;
 }
+
 .stButton > button:hover {
     border-color: var(--ink);
     color: var(--ink);
     transform: translateY(-1px);
 }
-.stButton > button:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
-.stButton > button p { text-align: left; }
+
+.stButton > button:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 2px;
+}
+
+.stButton > button p {
+    text-align: left;
+}
 
 /* ---------- Chat ---------- */
+
 [data-testid="stChatMessage"] {
     border-radius: 18px;
     padding: 1rem 1.15rem;
@@ -98,25 +132,46 @@ header[data-testid="stHeader"] { background: transparent; }
     background: var(--card);
     border: 1.5px solid var(--line);
 }
-[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarUser"]) {
+
+[data-testid="stChatMessage"]:has(
+    [data-testid="stChatMessageAvatarUser"]
+) {
     background: var(--ink);
     border-color: var(--ink);
 }
-[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarUser"]) p,
-[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarUser"]) li {
+
+[data-testid="stChatMessage"]:has(
+    [data-testid="stChatMessageAvatarUser"]
+) p,
+[data-testid="stChatMessage"]:has(
+    [data-testid="stChatMessageAvatarUser"]
+) li {
     color: #FFFFFF;
 }
-[data-testid="stChatMessage"] p { line-height: 1.6; }
+
+[data-testid="stChatMessage"] p {
+    line-height: 1.6;
+}
 
 [data-testid="stChatInput"] {
     border-radius: 16px;
     border: 1.5px solid var(--line);
     background: var(--card);
 }
-[data-testid="stChatInput"]:focus-within { border-color: var(--ink); }
 
-/* ---------- Tool call chips + expander ---------- */
-.chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .6rem; }
+[data-testid="stChatInput"]:focus-within {
+    border-color: var(--ink);
+}
+
+/* ---------- Tool calls ---------- */
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-top: .6rem;
+}
+
 .chip {
     background: #FFF6CC;
     border: 1.5px solid var(--marker);
@@ -126,38 +181,82 @@ header[data-testid="stHeader"] { background: transparent; }
     font-size: .82rem;
     font-weight: 600;
 }
+
 [data-testid="stExpander"] {
     border: 1.5px solid var(--line);
     border-radius: 12px;
     background: #FAFBFE;
     margin-top: .6rem;
 }
-.toolcall { padding: .5rem 0; border-top: 1px dashed var(--line); }
-.toolcall:first-child { border-top: none; }
-.toolcall b { font-family: 'Bricolage Grotesque', sans-serif; }
-.toolcall .label { color: var(--muted); font-size: .8rem; }
+
+.toolcall {
+    padding: .5rem 0;
+    border-top: 1px dashed var(--line);
+}
+
+.toolcall:first-child {
+    border-top: none;
+}
+
+.toolcall b {
+    font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.toolcall .label {
+    color: var(--muted);
+    font-size: .8rem;
+}
+
 .toolcall pre {
-    background: #EEF1F9; border-radius: 8px; padding: .5rem .7rem;
-    font-size: .82rem; white-space: pre-wrap; margin: .2rem 0 .5rem 0;
+    background: #EEF1F9;
+    border-radius: 8px;
+    padding: .5rem .7rem;
+    font-size: .82rem;
+    white-space: pre-wrap;
+    margin: .2rem 0 .5rem 0;
     color: var(--ink);
 }
 
 /* ---------- Sidebar ---------- */
-[data-testid="stSidebar"] { background: var(--ink); }
-[data-testid="stSidebar"] * { color: #E9EDF8; }
+
+[data-testid="stSidebar"] {
+    background: var(--ink);
+}
+
+[data-testid="stSidebar"] * {
+    color: #E9EDF8;
+}
+
 [data-testid="stSidebar"] h2 {
     font-family: 'Bricolage Grotesque', sans-serif;
-    color: #FFFFFF; font-size: 1.25rem; margin-bottom: .2rem;
+    color: #FFFFFF;
+    font-size: 1.25rem;
+    margin-bottom: .2rem;
 }
+
 .tool-card {
     border: 1.5px solid rgba(255,255,255,.18);
     border-radius: 12px;
     padding: .7rem .85rem;
     margin-bottom: .6rem;
 }
-.tool-card b { color: #FFFFFF; display: block; }
-.tool-card span { color: #B8C1DA; font-size: .85rem; }
-.flow { color: #B8C1DA; font-size: .8rem; line-height: 1.7; }
+
+.tool-card b {
+    color: #FFFFFF;
+    display: block;
+}
+
+.tool-card span {
+    color: #B8C1DA;
+    font-size: .85rem;
+}
+
+.flow {
+    color: #B8C1DA;
+    font-size: .8rem;
+    line-height: 1.7;
+}
+
 [data-testid="stSidebar"] .stButton > button {
     background: transparent;
     border: 1.5px solid rgba(255,255,255,.35);
@@ -166,40 +265,67 @@ header[data-testid="stHeader"] { background: transparent; }
     padding: .5rem 1rem;
     text-align: center;
 }
-[data-testid="stSidebar"] .stButton > button:hover { border-color: var(--marker); color: var(--marker); }
+
+[data-testid="stSidebar"] .stButton > button:hover {
+    border-color: var(--marker);
+    color: var(--marker);
+}
 
 @media (prefers-reduced-motion: reduce) {
-    .stButton > button { transition: none; }
+    .stButton > button {
+        transition: none;
+    }
 }
 </style>
 """,
     unsafe_allow_html=True,
 )
 
+
 # ----------------------------------------------------------------------------
-# Tool metadata (display only)
+# Tool metadata
 # ----------------------------------------------------------------------------
+
 TOOL_INFO = {
-    "calculate_percentage": ("🧮", "Percentage", "Marks, scores and ratios"),
-    "calculate_cgpa": ("📈", "CGPA", "Grade points across courses"),
-    "get_course_info": ("📚", "Course info", "CS course details"),
+    "calculate_percentage": (
+        "🧮",
+        "Percentage",
+        "Marks, scores and ratios",
+    ),
+    "calculate_cgpa": (
+        "📈",
+        "CGPA",
+        "Grade points across courses",
+    ),
+    "get_course_info": (
+        "📚",
+        "Course info",
+        "CS course details",
+    ),
 }
 
 STARTERS = [
     ("🧮", "What percentage is 432 out of 500?"),
-    ("📈", "Calculate my CGPA: A in 3 credits, B+ in 4 credits, A- in 3 credits"),
+    (
+        "📈",
+        "Calculate my CGPA: A in 3 credits, B+ in 4 credits, A- in 3 credits",
+    ),
     ("📚", "Tell me about the Data Structures course"),
 ]
 
 
 def tool_label(name):
-    icon, label, _ = TOOL_INFO.get(name, ("🔧", name.replace("_", " ").title(), ""))
+    icon, label, _ = TOOL_INFO.get(
+        name,
+        ("🔧", name.replace("_", " ").title(), ""),
+    )
     return f"{icon} {label}"
 
 
 # ----------------------------------------------------------------------------
-# MCP + Groq agent
+# MCP helpers
 # ----------------------------------------------------------------------------
+
 def get_tool_text(result):
     parts = []
 
@@ -210,264 +336,504 @@ def get_tool_text(result):
     if parts:
         return "\n".join(parts)
 
-    return str(result.structured_content or result)
+    return str(
+        result.structured_content
+        if hasattr(result, "structured_content")
+        else result
+    )
 
+
+def get_exception_details(exc):
+    """
+    Extract the real error from ExceptionGroup / TaskGroup errors.
+    """
+    details = [f"{type(exc).__name__}: {exc}"]
+
+    if hasattr(exc, "exceptions"):
+        for inner in exc.exceptions:
+            details.append(
+                f"{type(inner).__name__}: {inner}"
+            )
+
+            if hasattr(inner, "exceptions"):
+                for nested in inner.exceptions:
+                    details.append(
+                        f"  {type(nested).__name__}: {nested}"
+                    )
+
+    return "\n".join(details)
+
+
+# ----------------------------------------------------------------------------
+# MCP + Groq agent
+# ----------------------------------------------------------------------------
 
 async def run_agent(history):
-    api_key = st.secrets.get("GROQ_API_KEY", os.getenv("GROQ_API_KEY"))
+
+    # Get API key from Streamlit Secrets first
+    try:
+        api_key = st.secrets.get(
+            "GROQ_API_KEY",
+            os.getenv("GROQ_API_KEY"),
+        )
+    except Exception:
+        api_key = os.getenv("GROQ_API_KEY")
 
     if not api_key:
         raise RuntimeError(
-            "GROQ_API_KEY is missing. Add it in Streamlit Cloud → Settings → Secrets."
+            "GROQ_API_KEY is missing. "
+            "Add it in Streamlit Cloud → Settings → Secrets."
         )
 
-    model = st.secrets.get(
-        "GROQ_MODEL",
-        os.getenv("GROQ_MODEL", "openai/gpt-oss-120b"),
-    )
+    # Get model
+    try:
+        model = st.secrets.get(
+            "GROQ_MODEL",
+            os.getenv(
+                "GROQ_MODEL",
+                "openai/gpt-oss-120b",
+            ),
+        )
+    except Exception:
+        model = os.getenv(
+            "GROQ_MODEL",
+            "openai/gpt-oss-120b",
+        )
 
     client = Groq(api_key=api_key)
 
+    # MCP server parameters
+    server_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "mcp_server.py",
+    )
+
     server_params = StdioServerParameters(
         command=sys.executable,
-        args=["mcp_server.py"],
-        cwd=os.path.dirname(os.path.abspath(__file__)),
+        args=[server_path],
     )
 
     tool_calls_log = []
 
-    async with stdio_client(server_params) as (read, write):
-        async with ClientSession(read, write) as session:
-            await session.initialize()
+    try:
 
-            tool_result = await session.list_tools()
+        async with stdio_client(server_params) as (read, write):
 
-            tools = []
-            available_tools = []
+            async with ClientSession(read, write) as session:
 
-            for tool in tool_result.tools:
-                available_tools.append(tool.name)
-                tools.append(
+                # Connect to MCP server
+                await session.initialize()
+
+                # Get available MCP tools
+                tool_result = await session.list_tools()
+
+                tools = []
+                available_tools = []
+
+                for tool in tool_result.tools:
+
+                    available_tools.append(tool.name)
+
+                    tools.append(
+                        {
+                            "type": "function",
+                            "function": {
+                                "name": tool.name,
+                                "description": tool.description or "",
+                                "parameters": tool.inputSchema,
+                            },
+                        }
+                    )
+
+                messages = [
                     {
-                        "type": "function",
-                        "function": {
-                            "name": tool.name,
-                            "description": tool.description or "",
-                            "parameters": tool.inputSchema,
-                        },
+                        "role": "system",
+                        "content": (
+                            "You are a helpful student assistant. "
+                            "Use MCP tools whenever they are useful. "
+                            "You may call more than one tool when a request "
+                            "needs multiple steps. "
+                            "After receiving tool results, "
+                            "give a clear final answer."
+                        ),
+                    },
+                    *history,
+                ]
+
+                while True:
+
+                    response = client.chat.completions.create(
+                        model=model,
+                        messages=messages,
+                        tools=tools,
+                        tool_choice="auto",
+                    )
+
+                    message = response.choices[0].message
+
+                    assistant_message = {
+                        "role": "assistant",
+                        "content": message.content or "",
                     }
-                )
 
-            messages = [
-                {
-                    "role": "system",
-                    "content": (
-                        "You are a helpful student assistant. "
-                        "Use MCP tools whenever they are useful. "
-                        "You may call more than one tool when a request needs multiple steps. "
-                        "After receiving tool results, give a clear final answer."
-                    ),
-                },
-                *history,
-            ]
+                    # --------------------------------------------------------
+                    # AI requested MCP tool(s)
+                    # --------------------------------------------------------
 
-            while True:
-                response = client.chat.completions.create(
-                    model=model,
-                    messages=messages,
-                    tools=tools,
-                    tool_choice="auto",
-                )
+                    if message.tool_calls:
 
-                message = response.choices[0].message
+                        assistant_message["tool_calls"] = []
 
-                assistant_message = {
-                    "role": "assistant",
-                    "content": message.content or "",
-                }
+                        for call in message.tool_calls:
 
-                if message.tool_calls:
-                    assistant_message["tool_calls"] = []
-
-                    for call in message.tool_calls:
-                        assistant_message["tool_calls"].append(
-                            {
-                                "id": call.id,
-                                "type": "function",
-                                "function": {
-                                    "name": call.function.name,
-                                    "arguments": call.function.arguments,
-                                },
-                            }
-                        )
-
-                    messages.append(assistant_message)
-
-                    for call in message.tool_calls:
-                        tool_name = call.function.name
-
-                        try:
-                            arguments = json.loads(call.function.arguments or "{}")
-                        except json.JSONDecodeError:
-                            arguments = {}
-
-                        try:
-                            result = await session.call_tool(
-                                tool_name,
-                                arguments=arguments,
+                            assistant_message["tool_calls"].append(
+                                {
+                                    "id": call.id,
+                                    "type": "function",
+                                    "function": {
+                                        "name": call.function.name,
+                                        "arguments": call.function.arguments,
+                                    },
+                                }
                             )
-                            result_text = get_tool_text(result)
-                        except Exception as exc:
-                            result_text = f"Tool error: {exc}"
 
-                        tool_calls_log.append(
-                            {
-                                "tool": tool_name,
-                                "arguments": arguments,
-                                "result": result_text,
-                            }
-                        )
+                        messages.append(assistant_message)
 
-                        messages.append(
-                            {
-                                "role": "tool",
-                                "tool_call_id": call.id,
-                                "content": result_text,
-                            }
-                        )
+                        for call in message.tool_calls:
 
-                    continue
+                            tool_name = call.function.name
 
-                return message.content, available_tools, tool_calls_log
+                            # Parse arguments
+                            try:
+                                arguments = json.loads(
+                                    call.function.arguments or "{}"
+                                )
+                            except json.JSONDecodeError:
+                                arguments = {}
+
+                            # Call MCP tool
+                            try:
+
+                                result = await session.call_tool(
+                                    tool_name,
+                                    arguments=arguments,
+                                )
+
+                                result_text = get_tool_text(result)
+
+                            except Exception as exc:
+
+                                result_text = (
+                                    f"Tool error: "
+                                    f"{get_exception_details(exc)}"
+                                )
+
+                            tool_calls_log.append(
+                                {
+                                    "tool": tool_name,
+                                    "arguments": arguments,
+                                    "result": result_text,
+                                }
+                            )
+
+                            messages.append(
+                                {
+                                    "role": "tool",
+                                    "tool_call_id": call.id,
+                                    "content": result_text,
+                                }
+                            )
+
+                        continue
+
+                    # --------------------------------------------------------
+                    # Final AI answer
+                    # --------------------------------------------------------
+
+                    return (
+                        message.content,
+                        available_tools,
+                        tool_calls_log,
+                    )
+
+    except Exception as exc:
+
+        # Show the actual MCP / TaskGroup error
+        raise RuntimeError(
+            "MCP connection failed.\n\n"
+            + get_exception_details(exc)
+        ) from exc
 
 
 # ----------------------------------------------------------------------------
 # UI helpers
 # ----------------------------------------------------------------------------
+
 def render_tool_calls(tool_calls):
+
     if not tool_calls:
         return
 
     chips = "".join(
-        f'<span class="chip">{html.escape(tool_label(c["tool"]))}</span>'
+        f'<span class="chip">'
+        f'{html.escape(tool_label(c["tool"]))}'
+        f'</span>'
         for c in tool_calls
     )
-    st.markdown(f'<div class="chips">{chips}</div>', unsafe_allow_html=True)
+
+    st.markdown(
+        f'<div class="chips">{chips}</div>',
+        unsafe_allow_html=True,
+    )
 
     count = len(tool_calls)
-    with st.expander(f"See how this was worked out ({count} tool call{'s' if count != 1 else ''})"):
+
+    with st.expander(
+        f"See how this was worked out "
+        f"({count} tool call{'s' if count != 1 else ''})"
+    ):
+
         blocks = []
+
         for c in tool_calls:
-            args = html.escape(json.dumps(c["arguments"], indent=2, ensure_ascii=False))
-            result = html.escape(str(c["result"]))
-            blocks.append(
-                f'<div class="toolcall"><b>{html.escape(tool_label(c["tool"]))}</b>'
-                f'<div class="label">Input</div><pre>{args}</pre>'
-                f'<div class="label">Result</div><pre>{result}</pre></div>'
+
+            args = html.escape(
+                json.dumps(
+                    c["arguments"],
+                    indent=2,
+                    ensure_ascii=False,
+                )
             )
-        st.markdown("".join(blocks), unsafe_allow_html=True)
+
+            result = html.escape(
+                str(c["result"])
+            )
+
+            blocks.append(
+                f'<div class="toolcall">'
+                f'<b>{html.escape(tool_label(c["tool"]))}</b>'
+                f'<div class="label">Input</div>'
+                f'<pre>{args}</pre>'
+                f'<div class="label">Result</div>'
+                f'<pre>{result}</pre>'
+                f'</div>'
+            )
+
+        st.markdown(
+            "".join(blocks),
+            unsafe_allow_html=True,
+        )
 
 
 def render_message(m):
-    avatar = "🧑‍🎓" if m["role"] == "user" else "🎓"
-    with st.chat_message(m["role"], avatar=avatar):
+
+    avatar = (
+        "🧑‍🎓"
+        if m["role"] == "user"
+        else "🎓"
+    )
+
+    with st.chat_message(
+        m["role"],
+        avatar=avatar,
+    ):
+
         if m.get("error"):
             st.error(m["content"])
         else:
             st.markdown(m["content"])
-        render_tool_calls(m.get("tool_calls"))
+
+        render_tool_calls(
+            m.get("tool_calls")
+        )
 
 
 # ----------------------------------------------------------------------------
 # Sidebar
 # ----------------------------------------------------------------------------
+
 with st.sidebar:
+
     st.header("Tools")
-    st.caption("The assistant picks the right one for each question.")
+
+    st.caption(
+        "The assistant picks the right one for each question."
+    )
 
     for icon, label, desc in TOOL_INFO.values():
+
         st.markdown(
-            f'<div class="tool-card"><b>{icon} {label}</b><span>{desc}</span></div>',
+            f'<div class="tool-card">'
+            f'<b>{icon} {label}</b>'
+            f'<span>{desc}</span>'
+            f'</div>',
             unsafe_allow_html=True,
         )
 
     st.markdown(
-        '<p class="flow">Your question → AI agent → MCP client → MCP server → tool → answer</p>',
+        '<p class="flow">'
+        'Your question → AI agent → MCP client → '
+        'MCP server → tool → answer'
+        '</p>',
         unsafe_allow_html=True,
     )
 
-    if st.button("Clear chat", use_container_width=True):
+    if st.button(
+        "Clear chat",
+        use_container_width=True,
+    ):
         st.session_state.messages = []
         st.rerun()
+
 
 # ----------------------------------------------------------------------------
 # State
 # ----------------------------------------------------------------------------
+
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-typed = st.chat_input("Ask about percentages, CGPA, or CS courses")
-user_request = typed or st.session_state.pop("queued", None)
+typed = st.chat_input(
+    "Ask about percentages, CGPA, or CS courses"
+)
+
+user_request = typed or st.session_state.pop(
+    "queued",
+    None,
+)
 
 if user_request:
-    st.session_state.messages.append({"role": "user", "content": user_request})
+    st.session_state.messages.append(
+        {
+            "role": "user",
+            "content": user_request,
+        }
+    )
+
 
 # ----------------------------------------------------------------------------
 # Main page
 # ----------------------------------------------------------------------------
+
 st.markdown(
     """
 <div class="hero">
     <h1><span>Student Assistant</span></h1>
-    <p>Work out percentages, calculate your CGPA, or look up a CS course. Powered by Groq and MCP tools.</p>
+    <p>
+        Work out percentages, calculate your CGPA,
+        or look up a CS course.
+        Powered by Groq and MCP tools.
+    </p>
 </div>
 """,
     unsafe_allow_html=True,
 )
 
+
 if not st.session_state.messages:
+
     st.write("Try one of these:")
-    cols = st.columns(len(STARTERS))
-    for i, (col, (icon, prompt)) in enumerate(zip(cols, STARTERS)):
+
+    cols = st.columns(
+        len(STARTERS)
+    )
+
+    for i, (col, (icon, prompt)) in enumerate(
+        zip(cols, STARTERS)
+    ):
+
         with col:
-            if st.button(f"{icon}  {prompt}", key=f"starter_{i}"):
+
+            if st.button(
+                f"{icon}  {prompt}",
+                key=f"starter_{i}",
+            ):
+
                 st.session_state.queued = prompt
                 st.rerun()
+
+
+# Display previous messages
 
 for m in st.session_state.messages:
     render_message(m)
 
+
 # ----------------------------------------------------------------------------
-# Answer the newest question
+# Answer newest question
 # ----------------------------------------------------------------------------
+
 if user_request:
-    # Send recent conversation so follow-up questions have context.
+
+    # Send recent conversation to AI
     history = [
-        {"role": m["role"], "content": m["content"]}
+        {
+            "role": m["role"],
+            "content": m["content"],
+        }
         for m in st.session_state.messages
         if not m.get("error")
     ][-12:]
 
-    with st.chat_message("assistant", avatar="🎓"):
-        with st.spinner("Working on it..."):
+    with st.chat_message(
+        "assistant",
+        avatar="🎓",
+    ):
+
+        with st.spinner(
+            "Working on it..."
+        ):
+
             try:
-                answer, _, tool_calls = asyncio.run(run_agent(history))
+
+                answer, _, tool_calls = asyncio.run(
+                    run_agent(history)
+                )
+
                 reply = {
                     "role": "assistant",
-                    "content": answer or "I couldn't produce an answer. Try rephrasing your question.",
+                    "content": (
+                        answer
+                        or
+                        "I couldn't produce an answer. "
+                        "Try rephrasing your question."
+                    ),
                     "tool_calls": tool_calls,
                 }
+
             except Exception as exc:
+
+                # IMPORTANT:
+                # Show actual underlying error instead of
+                # only "unhandled errors in a TaskGroup"
+
+                error_details = get_exception_details(exc)
+
                 reply = {
                     "role": "assistant",
-                    "content": f"Something went wrong: {exc}",
+                    "content": (
+                        "Something went wrong:\n\n"
+                        + error_details
+                    ),
                     "error": True,
                 }
 
         if reply.get("error"):
-            st.error(reply["content"])
-        else:
-            st.markdown(reply["content"])
-            render_tool_calls(reply["tool_calls"])
 
-    st.session_state.messages.append(reply)
+            st.error(
+                reply["content"]
+            )
+
+        else:
+
+            st.markdown(
+                reply["content"]
+            )
+
+            render_tool_calls(
+                reply["tool_calls"]
+            )
+
+    st.session_state.messages.append(
+        reply
+    )
