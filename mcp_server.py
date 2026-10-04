@@ -1,4 +1,7 @@
+import sys
+
 from mcp.server.fastmcp import FastMCP
+
 
 mcp = FastMCP("Student Assistant MCP")
 
@@ -31,7 +34,7 @@ def get_course_info(course: str) -> str:
         "computer networks": "Computer Networks covers communication between computers, network models, protocols, IP addressing, routing, and network security basics.",
         "database": "Database courses cover data storage, SQL, tables, relationships, normalization, and database management systems.",
         "artificial intelligence": "Artificial Intelligence covers techniques that allow computers to solve problems that normally require human intelligence, such as search, reasoning, and machine learning.",
-        "machine learning": "Machine Learning focuses on training models to learn patterns from data and make predictions or decisions."
+        "machine learning": "Machine Learning focuses on training models to learn patterns from data and make predictions or decisions.",
     }
 
     key = course.strip().lower()
@@ -43,5 +46,5 @@ def get_course_info(course: str) -> str:
 
 
 if __name__ == "__main__":
-    print("MCP Student Assistant server is running...", flush=True)
+    print("MCP Student Assistant server is running...", file=sys.stderr, flush=True)
     mcp.run()
